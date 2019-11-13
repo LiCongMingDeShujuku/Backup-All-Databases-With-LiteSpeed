@@ -21,7 +21,18 @@
 use master
 go
 set nocount on
-select 'exec master.dbo.xp_backup_database @database = ”’ + name + ”’, @filename = ”D:\MyPath\’ + name + ‘ LiteSpeed_Full.BKP”, @init = 1, @logging = 0, @with = ”SKIP”’ + char(10) + ‘go’ + char(10) from sysdatabases where name not in ('tempdb')
+select 'exec master.dbo.xp_backup_database 
+	@database = ”’ + name + ”’
+,	@filename = ”D:\MyPath\’ + name + ‘ _LiteSpeed_Full.bkp”
+,	@init = 1
+,	@logging = 0
+,	@with = ”SKIP”’ + char(10) + ‘go’ + char(10) 
+from 
+	sysdatabases 
+where 
+	name not in ('tempdb')
+
+
 
 ```
 
